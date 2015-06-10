@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Controlgemas</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+    <p><%= link_to 'Home', root_path %></p>
+
+    <% if user_signed_in? %>
+      <p><%= link_to 'Dados da Empresa', companies_path %></p>
+      <p><%= link_to 'Clientes', customers_path %></p>
+      <p><%= link_to 'Produtos', products_path %></p>
+      <p><%= link_to('Edit registration', edit_user_registration_path) %></p>
+      <p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </p>
+    <% else %>
+      <p><%= link_to('Login', new_user_session_path)  %></p>
+    <% end %>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+</body>
+</html>

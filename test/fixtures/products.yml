@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  price: 9.99
+  weight: 9.99
+  value_carat: 9.99
+  user_id: 
+
+two:
+  name: MyString
+  price: 9.99
+  weight: 9.99
+  value_carat: 9.99
+  user_id: 
