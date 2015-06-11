@@ -15,8 +15,9 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
+    #@user = current_user.id
+    @products = Product.where(:user_id => current_user.id)
     @sale = Sale.new
-    @products = Product.all
   end
 
   # GET /sales/1/edit

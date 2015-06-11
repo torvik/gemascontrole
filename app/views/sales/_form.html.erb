@@ -27,8 +27,11 @@
 
   <div class="form-group">
     <%= f.label :product_id %><br>
-    <%= collection_check_boxes(:sale, :product_ids, @products, :id, :name) %>
+    <%= collection_check_boxes(:sale, :product_ids, @products , :id, :name) %>
+
   </div>
+
+
 
   <div class="actions">
     <%= f.submit %>
