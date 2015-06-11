@@ -1,0 +1,36 @@
+<%= form_for(@sale) do |f| %>
+  <% if @sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+      <% @sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date_sale %><br>
+    <%= f.date_select :date_sale %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :qtd_itens %><br>
+    <%= f.number_field :qtd_itens %>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :product_id %><br>
+    <%= collection_check_boxes(:sale, :product_ids, @products, :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

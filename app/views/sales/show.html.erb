@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date sale:</strong>
+  <%= @sale.date_sale.strftime("%d/%m/%Y")  %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @sale.amount %>
+</p>
+
+<p>
+  <strong>Qtd itens:</strong>
+  <%= @sale.qtd_itens %>
+</p>
+
+<p>
+  <strong>Products:</strong>
+  <%= @sale.products.map { |c| c.name}.join(' | ') %>
+
+</p>
+
+
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>
