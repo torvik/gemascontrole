@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Companies</h1>
+<h1>Dados da Empresa</h1>
 
-<table>
+<table class="table table-hover table-condensed">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Endereco</th>
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th>Endereço</th>
       <th>Cidade</th>
       <th>Estado</th>
-      <th>Telefone 1</th>
-      <th>Telefone 2</th>
+      <th>Telefone</th>
+      <th>Celular</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,9 +27,9 @@
         <td><%= company.estado %></td>
         <td><%= company.telefone_1 %></td>
         <td><%= company.telefone_2 %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Exibir', company , class: "btn btn-default btn-xs"%></td>
+        <td><%= link_to 'Editar', edit_company_path(company) , class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Deletar', company, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs" %></td>
       <% end %>
       </tr>
     <% end %>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Company', new_company_path %>
+<%= link_to 'Nova Empresa', new_company_path , class: "btn btn-default btn-sm" %>

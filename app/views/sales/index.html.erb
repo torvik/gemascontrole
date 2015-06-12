@@ -2,7 +2,7 @@
 
 <h1>Listing Sales</h1>
 
-<table>
+<table class="table table-hover table-condensed">
   <thead>
     <tr>
       <th>Date sale</th>
@@ -23,9 +23,9 @@
         <td><%= sale.qtd_itens %></td>
         <td><%= sale.products.map { |c| c.name}.join(' | ') %> </td>
         <td><%= sale.user.email %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', sale , class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs" %></td>
        <% end %>
       </tr>
     <% end %>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Sale', new_sale_path %>
+<%= link_to 'New Sale', new_sale_path , class: "btn btn-default btn-sm" %>

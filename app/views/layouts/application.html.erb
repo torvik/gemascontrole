@@ -5,27 +5,42 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
+<%= render 'layouts/header' %>
 
-    <p><%= link_to 'Home', root_path %></p>
+<% if user_signed_in? %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+      <%= render 'layouts/menu' %>
+      </div>
+      <div class="col-xs-12 col-md-9">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
 
-    <% if user_signed_in? %>
-      <p><%= link_to 'Dados da Empresa', companies_path %></p>
-      <p><%= link_to 'Clientes', customers_path %></p>
-      <p><%= link_to 'Produtos', products_path %></p>
-      <p><%= link_to 'Vendas', sales_path %></p>
-      <p><%= link_to('Edit registration', edit_user_registration_path) %></p>
-      <p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </p>
-    <% else %>
-      <p><%= link_to('Login', new_user_session_path)  %></p>
-    <% end %>
+          <%= yield %>
+      </div>
+    </div>
+  </div>
+<% else %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div><%= yield %></div>
 
-<%= yield %>
+ <% end %>
+
+<div class="footer">
+<hr> <p> Desenvolvidor por <%= link_to 'BreadBox' , 'http://www.breadbox.com.br' %> </p>
+</div>
+
 
 </body>
 </html>
