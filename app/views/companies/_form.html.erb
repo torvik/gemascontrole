@@ -1,45 +1,68 @@
-<%= form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+<%# Conditionally set remote: true. Also, passing model name as data attribute %>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
 
-      <ul>
-      <% @company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@company, remote: remote, html: {role: :form, 'data-model' => 'company'}) do |f| %>
+           <% if @company.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+                <ul>
+                <% @company.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :endereco %><br>
-    <%= f.text_field :endereco %>
-  </div>
-  <div class="field">
-    <%= f.label :cidade %><br>
-    <%= f.text_field :cidade %>
-  </div>
-  <div class="field">
-    <%= f.label :estado %><br>
-    <%= f.text_field :estado %>
-  </div>
-  <div class="field">
-    <%= f.label :telefone_1 %><br>
-    <%= f.text_field :telefone_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :telefone_2 %><br>
-    <%= f.text_field :telefone_2 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+            <div class="form-group" >
+              <%= f.label :nome , class: 'control-label'%>
+              <%= f.text_field :name , class: "form-control" %>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <%= f.label :email , class: 'control-label'%>
+              <%= f.text_field :email, class: "form-control"  %>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <%= f.label :endereço , class: 'control-label'%>
+              <%= f.text_field :endereco, class: "form-control"  %>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <%= f.label :cidade , class: 'control-label'%>
+              <%= f.text_field :cidade, class: "form-control"  %>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <%= f.label :estado , class: 'control-label'%>
+              <%= f.text_field :estado, class: "form-control"  %>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <%= f.label :telefone , class: 'control-label'%>
+              <%= f.text_field :telefone_1, class: "form-control"  %>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <%= f.label :celular , class: 'control-label'%>
+              <%= f.text_field :telefone_2 , class: "form-control" %>
+              <span class="help-block"></span>
+            </div>
+
+            <div class="modal-footer">
+              <div class="actions">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <%= f.submit  class: "btn btn-primary" %>
+              </div>
+            </div>
+
+          <% end %>
+
+
+
+
+
+
+

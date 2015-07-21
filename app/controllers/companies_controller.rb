@@ -5,6 +5,10 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
+
+    # added:
+    @company = Company.new
+
   end
 
 
@@ -32,9 +36,13 @@ class CompaniesController < ApplicationController
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
+         # added:
+        format.js   { render action: 'show', status: :created, location: @company }
       else
         format.html { render :new }
         format.json { render json: @company.errors, status: :unprocessable_entity }
+         # added:
+        format.js   { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end

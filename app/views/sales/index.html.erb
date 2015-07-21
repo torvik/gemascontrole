@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Sales</h1>
+<h1>Vendas</h1>
 
 <table class="table table-hover table-condensed">
   <thead>
     <tr>
-      <th>Date sale</th>
-      <th>Amount</th>
-      <th>Qtd itens</th>
-      <th>Products</th>
-      <th>User</th>
+      <th>Data da Venda</th>
+      <th>Valor</th>
+      <th>Quantidade de itens</th>
+      <th>Produtos</th>
+      <th>Cliente</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,7 +22,7 @@
         <td><%= sale.amount %></td>
         <td><%= sale.qtd_itens %></td>
         <td><%= sale.products.map { |c| c.name}.join(' | ') %> </td>
-        <td><%= sale.user.email %></td>
+        <td><%= sale.customer.name %></td>
         <td><%= link_to 'Show', sale , class: "btn btn-default btn-xs" %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-default btn-xs" %></td>
         <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs" %></td>

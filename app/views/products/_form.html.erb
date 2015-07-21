@@ -11,29 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :nome %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+  <div class="form-group">
+    <%= f.label :preço %>
+    <%= f.text_field :price , class: "form-control"%>
   </div>
-  <div class="field">
-    <%= f.label :weight %><br>
-    <%= f.text_field :weight %>
+  <div class="form-group">
+    <%= f.label :peso %>
+    <%= f.text_field :weight, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :value_carat %><br>
-    <%= f.text_field :value_carat %>
+  <div class="form-group">
+    <%= f.label :valor_ct %>
+    <%= f.text_field :value_carat , class: "form-control"%>
   </div>
 
-   <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.text_field :quantity %>
+   <div class="form-group">
+    <%= f.label :quantidade_em_estoque %><br>
+    <%= f.text_field :quantity, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
   </div>
 <% end %>

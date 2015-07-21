@@ -1,34 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @product.name %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Preço:</strong>
   <%= @product.price %>
 </p>
 
 <p>
-  <strong>Weight:</strong>
+  <strong>Peso:</strong>
   <%= @product.weight %>
 </p>
 
 <p>
-  <strong>Value carat:</strong>
+  <strong>Valor /ct:</strong>
   <%= @product.value_carat %>
 </p>
 
 <p>
-  <strong>Quantity:</strong>
+  <strong>Quantidade em estoque:</strong>
   <%= @product.quantity %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @product.user.email %>
-</p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

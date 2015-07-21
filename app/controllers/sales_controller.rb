@@ -5,18 +5,20 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
+    @sales = Sale.all.order("created_at DESC")
   end
 
   # GET /sales/1
   # GET /sales/1.json
   def show
+    @customers = Customer.where(:user_id => current_user.id)
   end
 
   # GET /sales/new
   def new
     #@user = current_user.id
     @products = Product.where(:user_id => current_user.id)
+    @customers = Customer.where(:user_id => current_user.id)
     @sale = Sale.new
   end
 
@@ -76,6 +78,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:date_sale, :amount, :qtd_itens, :user_id,:product_ids => [])
+      params.require(:sale).permit(:date_sale, :amount, :qtd_itens, :user_id,:customer_id, :product_ids => [] )
     end
 end

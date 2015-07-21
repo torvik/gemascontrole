@@ -2,7 +2,7 @@
 
 <h1>Dados da Empresa</h1>
 
-<table class="table table-hover table-condensed">
+<table class="table table-hover table-condensed" id='company_table'>
   <thead>
     <tr>
       <th>Nome</th>
@@ -20,16 +20,8 @@
     <% @companies.each do |company| %>
       <tr>
       <% if current_user.id == company.user.id %>
-        <td><%= company.name %></td>
-        <td><%= company.email %></td>
-        <td><%= company.endereco %></td>
-        <td><%= company.cidade %></td>
-        <td><%= company.estado %></td>
-        <td><%= company.telefone_1 %></td>
-        <td><%= company.telefone_2 %></td>
-        <td><%= link_to 'Exibir', company , class: "btn btn-default btn-xs"%></td>
-        <td><%= link_to 'Editar', edit_company_path(company) , class: "btn btn-default btn-xs" %></td>
-        <td><%= link_to 'Deletar', company, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs" %></td>
+       <%# Render table row partial for each COMPANY object %>
+      <%= render partial: 'table_row', locals: {company: company} %>
       <% end %>
       </tr>
     <% end %>
@@ -38,4 +30,24 @@
 
 <br>
 
-<%= link_to 'Nova Empresa', new_company_path , class: "btn btn-default btn-sm" %>
+<%# Added Bootstrap data modal attribute %>
+<%= link_to 'Nova Empresa Modal', '#new_company_path', 'data-toggle' => 'modal' , class: "btn btn-default btn-sm" %>
+
+<!-- Modal -->
+
+<div class="modal fade" id="new_company_path" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cadastro da Empresa</h4>
+      </div>
+      <div class="modal-body">
+
+       <%= render 'form', modal: true %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
