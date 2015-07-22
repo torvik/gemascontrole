@@ -33,6 +33,7 @@
     <% end %>
   </div>
 
+
   <div class="form-group">
     <%= f.label :cliente %><br>
     <%= collection_select(:sale, :customer_id, Customer.where(:user_id => current_user.id) , :id, :name) %>

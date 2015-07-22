@@ -7,4 +7,11 @@ class Product < ActiveRecord::Base
                     presence: true
 
 
+  def nome_quantidade
+    if @product
+      "#{@product.name} #{@product.quantity}"
+    end
+  end
+
+
 end
