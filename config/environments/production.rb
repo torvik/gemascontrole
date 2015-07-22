@@ -76,6 +76,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { host: 'https://gemascontrol.herokuapp.com/', port: 3000 }
-  config.assets.raise_asset_errors = false
+  config.action_mailer.default_url_options = { host: 'gemascontrol.herokuapp.com' }
+  #config.assets.raise_asset_errors = false
 end
