@@ -27,12 +27,12 @@
 
 <p>
   <strong>Telefone:</strong>
-  <%= @customer.telefone_1 %>
+  <%= number_to_phone(@customer.telefone_1)  %>
 </p>
 
 <p>
   <strong>Celular:</strong>
-  <%= @customer.telefone_2 %>
+<%= number_to_phone(@customer.telefone_2)  %>
 </p>
 
 

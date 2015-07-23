@@ -3,8 +3,8 @@
         <td><%= company.endereco %></td>
         <td><%= company.cidade %></td>
         <td><%= company.estado %></td>
-        <td><%= company.telefone_1 %></td>
-        <td><%= company.telefone_2 %></td>
+        <td><%= number_to_phone(company.telefone_1) %></td>
+        <td><%= number_to_phone(company.telefone_2) %></td>
         <td><%= link_to 'Exibir', company , class: "btn btn-default btn-xs"%></td>
         <td><%= link_to 'Editar', edit_company_path(company) , class: "btn btn-default btn-xs" %></td>
         <td><%= link_to 'Deletar', company, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs" %></td>

@@ -89,7 +89,7 @@
       <% if current_user.id == customer.user.id %>
         <td><%= link_to customer.name, customer %></td>
         <td><%= customer.email %></td>
-        <td><%= customer.telefone_2 %></td>
+        <td><%= number_to_phone(customer.telefone_2) %></td>
       <% end %>
       </tr>
     <% end %>

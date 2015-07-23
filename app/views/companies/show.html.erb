@@ -27,12 +27,12 @@
 
 <p>
   <strong>Telefone:</strong>
-  <%= @company.telefone_1 %>
+  <%= number_to_phone(@company.telefone_1) %>
 </p>
 
 <p>
   <strong>Celular:</strong>
-  <%= @company.telefone_2 %>
+  <%= number_to_phone(@company.telefone_2) %>
 </p>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
