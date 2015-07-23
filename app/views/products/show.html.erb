@@ -7,7 +7,7 @@
 
 <p>
   <strong>Preço:</strong>
-  <%= @product.price %>
+  <%= number_to_currency(@product.price , precision: 2) %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>Valor /ct:</strong>
-  <%= @product.value_carat %>
+  <%= number_to_currency(@product.value_carat , precision: 2) %>
 </p>
 
 <p>

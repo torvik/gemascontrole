@@ -27,9 +27,9 @@ module Controlgemas
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.serve_static_assets = true
-    config.assets.raise_asset_errors = false
-    config.assets.raise_errors = false
+    #config.serve_static_assets = true
+    #config.assets.raise_asset_errors = false
+    #config.assets.raise_errors = false
 
   end
 end

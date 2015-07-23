@@ -7,7 +7,7 @@
 
 <p>
   <strong>Valor:</strong>
-  <%= @sale.amount %>
+  <%=  number_to_currency(@sale.amount , precision: 2) %>
 </p>
 
 <p>

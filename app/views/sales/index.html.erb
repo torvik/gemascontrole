@@ -19,7 +19,7 @@
       <tr>
       <% if current_user.id == sale.user.id %>
         <td><%= sale.date_sale.strftime("%d/%m/%Y") %></td>
-        <td><%= sale.amount %></td>
+        <td><%= number_to_currency(sale.amount, precision: 2) %></td>
         <td><%= sale.qtd_itens %></td>
         <td><%= sale.products.map { |c| c.name}.join(' | ') %> </td>
         <td><%= sale.customer.name %></td>
