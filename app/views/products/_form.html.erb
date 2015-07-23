@@ -13,24 +13,24 @@
 
   <div class="form-group">
     <%= f.label :nome %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control" , placeholder: "Nome do produto" %>
   </div>
   <div class="form-group">
     <%= f.label :preço %>
-    <%= f.text_field :price , class: "form-control"%>
+    <%= f.text_field :price , class: "form-control", placeholder: "Valor em $ xxxx.xx" %>
   </div>
   <div class="form-group">
-    <%= f.label :peso %>
-    <%= f.text_field :weight, class: "form-control" %>
+    <%= f.label :peso_ct %>
+    <%= f.text_field :weight, class: "form-control" , placeholder: "Peso por quilate xx.xx" %>
   </div>
   <div class="form-group">
     <%= f.label :valor_ct %>
-    <%= f.text_field :value_carat , class: "form-control"%>
+    <%= f.text_field :value_carat , class: "form-control" , placeholder: "Valor em $ xxxx.xx"%>
   </div>
 
    <div class="form-group">
     <%= f.label :quantidade_em_estoque %><br>
-    <%= f.text_field :quantity, class: "form-control" %>
+    <%= f.text_field :quantity, class: "form-control" , placeholder: "Quantidade em estoque do produto " %>
   </div>
 
   <div class="actions">

@@ -5,7 +5,7 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all.order("created_at DESC")
+    @sales = Sale.where(:user_id => current_user.id).order("created_at DESC")
   end
 
   # GET /sales/1
@@ -34,6 +34,8 @@ class SalesController < ApplicationController
     #@products = Product.where(:id => params[:sales_product])
     #@sales.products << @products
     @sale.user_id = current_user.id
+
+    @sale.atualiza_estoque
 
     respond_to do |format|
       if @sale.save

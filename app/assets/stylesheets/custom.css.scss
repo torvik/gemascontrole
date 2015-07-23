@@ -91,14 +91,10 @@ body {
    //background-image: url('https://giantswarm.io/static/img/skyline/city_skyline_buildings.svg');
   position: relative;
   display: block;
-  min-width: 1200px;
-  max-width: 1200px;
+  max-width: 100%;
   width: 100%;
   overflow: hidden;
   height: 70px;
-  left: 50%;
-  margin-left: -600px;
-  margin-bottom: -11px;
 
 }
 
