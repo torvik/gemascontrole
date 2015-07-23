@@ -6,17 +6,17 @@
 </p>
 
 <p>
-  <strong>Preço:</strong>
+  <strong>Preço $:</strong>
   <%= number_to_currency(@product.price , precision: 2) %>
 </p>
 
 <p>
-  <strong>Peso:</strong>
-  <%= @product.weight %>
+  <strong>Peso ct:</strong>
+  <%= number_with_precision(@product.weight, :precision => 2) %>
 </p>
 
 <p>
-  <strong>Valor /ct:</strong>
+  <strong>Valor por ct:</strong>
   <%= number_to_currency(@product.value_carat , precision: 2) %>
 </p>
 

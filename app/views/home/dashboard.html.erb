@@ -11,9 +11,8 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Preço $</th>
-      <th>Peso</th>
-      <th>Valor /ct $</th>
+      <th>Peso ct</th>
+      <th>Valor ct $</th>
       <th>Quantidade</th>
     </tr>
   </thead>
@@ -23,8 +22,7 @@
       <tr>
       <% if current_user.id == product.user.id %>
         <td><%= link_to product.name, product %></td>
-        <td><%= number_to_currency( product.price , precision: 2) %></td>
-        <td><%= product.weight %></td>
+        <td><%= number_with_precision(product.weight, :precision => 2) %></td>
         <td><%= number_to_currency( product.value_carat, precision: 2) %></td>
         <td><%= product.quantity %></td>
 
@@ -46,7 +44,8 @@
   <thead>
     <tr>
       <th>Data da Venda</th>
-      <th>Valor</th>
+      <th>Cliente</th>
+      <th>Valor $</th>
 
     </tr>
   </thead>
@@ -56,6 +55,7 @@
       <tr>
       <% if current_user.id == sale.user.id %>
         <td><%= link_to sale.date_sale.strftime("%d/%m/%Y"), sale %></td>
+        <td><%= sale.customer.name %></td>
         <td><%= number_to_currency( sale.amount, precision: 2) %></td>
 
        <% end %>

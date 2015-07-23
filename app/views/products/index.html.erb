@@ -6,9 +6,9 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Preço</th>
-      <th>Peso</th>
-      <th>Valor /ct</th>
+      <th>Preço $</th>
+      <th>Peso ct</th>
+      <th>Valor por ct $</th>
       <th>Quantidade em estoque</th>
       <th colspan="3"></th>
     </tr>
@@ -20,7 +20,7 @@
       <% if current_user.id == product.user.id %>
         <td><%= product.name %></td>
         <td><%= number_to_currency(product.price, precision: 2)  %></td>
-        <td><%= product.weight %></td>
+        <td><%= number_with_precision(product.weight, :precision => 2) %></td>
         <td><%= number_to_currency(product.value_carat, precision: 2)   %></td>
         <td><%= product.quantity %></td>
         <td><%= link_to 'Show', product , class: "btn btn-default btn-xs"%></td>
