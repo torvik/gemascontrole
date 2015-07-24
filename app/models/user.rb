@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :products, dependent: :destroy
   has_many :customer, dependent: :destroy
   has_one  :company, dependent: :destroy
+  has_many :sales
 
 
 

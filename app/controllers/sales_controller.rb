@@ -31,11 +31,8 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-    #@products = Product.where(:id => params[:sales_product])
-    #@sales.products << @products
     @sale.user_id = current_user.id
 
-    @sale.atualiza_estoque
 
     respond_to do |format|
       if @sale.save

@@ -8,9 +8,7 @@ class Product < ActiveRecord::Base
 
 
   def nome_quantidade
-    if @product
       "#{@product.name} #{@product.quantity}"
-    end
   end
 
 
