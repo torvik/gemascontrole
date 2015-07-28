@@ -33,9 +33,33 @@ class SalesController < ApplicationController
     @sale = Sale.new(sale_params)
     @sale.user_id = current_user.id
 
-
     respond_to do |format|
       if @sale.save
+
+        sale = @sale
+        puts sale.id
+
+        @products = Product.joins('INNER JOIN products_sales ps ON ps.products_sales.product_id = products.id and ps.products_sales.sale_id = ?', sale.id)
+
+        if @products.count == 1
+          puts produtos.name
+          puts "#{produtos.quantity} - #{@sale.qtd_itens}"
+          produtos.quantity = (produtos.quantity - @sale.qtd_itens)
+          puts produtos.quantity
+        else
+          if @products.count >> 1
+            produtos.each do |product|
+                puts product.name
+                puts "#{product.quantity} - #{@sale.qtd_itens}"
+                product.quantity = (product.quantity - @sale.qtd_itens)
+                puts product.quantity
+                #product.quantity.save
+                #@produto = produtos
+                #@produto.save
+            end
+          end
+        end
+
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
       else
