@@ -56,7 +56,7 @@
       <% if current_user.id == sale.user.id %>
         <td><%= link_to sale.date_sale.strftime("%d/%m/%Y"), sale %></td>
         <td><%= sale.customer.name %></td>
-        <td><%= number_to_currency( sale.amount, precision: 2) %></td>
+        <td><%= number_to_currency(sale.amount, precision: 2) %></td>
 
        <% end %>
       </tr>
