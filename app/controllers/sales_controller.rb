@@ -40,10 +40,10 @@ class SalesController < ApplicationController
 
         @products = Product.joins('INNER JOIN products_sales ON products_sales.product_id = products.id').where("products_sales.sale_id = ?", sale.id)
         @products.each do |product|
-          puts product.name
-          puts "#{product.quantity} - #{@sale.qtd_itens}"
+          #puts product.name
+          #puts "#{product.quantity} - #{@sale.qtd_itens}"
           product.quantity -= @sale.qtd_itens
-          puts product.quantity
+          #puts product.quantity
           @produto = product
           @produto.save
         end
