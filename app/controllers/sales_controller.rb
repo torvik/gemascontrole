@@ -37,28 +37,36 @@ class SalesController < ApplicationController
       if @sale.save
 
         sale = @sale
-        puts sale.id
 
-        @products = Product.joins('INNER JOIN products_sales ps ON ps.products_sales.product_id = products.id and ps.products_sales.sale_id = ?', sale.id)
-
-        if @products.count == 1
-          puts produtos.name
-          puts "#{produtos.quantity} - #{@sale.qtd_itens}"
-          produtos.quantity = (produtos.quantity - @sale.qtd_itens)
-          puts produtos.quantity
-        else
-          if @products.count >> 1
-            produtos.each do |product|
-                puts product.name
-                puts "#{product.quantity} - #{@sale.qtd_itens}"
-                product.quantity = (product.quantity - @sale.qtd_itens)
-                puts product.quantity
-                #product.quantity.save
-                #@produto = produtos
-                #@produto.save
-            end
-          end
+        @products = Product.joins('INNER JOIN products_sales ON products_sales.product_id = products.id').where("products_sales.sale_id = ?", sale.id)
+        @products.each do |product|
+          puts product.name
+          puts "#{product.quantity} - #{@sale.qtd_itens}"
+          product.quantity -= @sale.qtd_itens
+          puts product.quantity
+          @produto = product
+          @produto.save
         end
+
+        # if @products.count == 1
+        #   produto = @products
+        #   #puts produto.name
+        #   #puts "#{produto.quantity} - #{@sale.qtd_itens}"
+        #   #produto.quantity = (produto.quantity - @sale.qtd_itens)
+        #   #puts produto.quantity
+        # else
+        #   if @products.count >> 1
+        #     @products.each do |product|
+        #         puts product.name
+        #         puts "#{product.quantity} - #{@sale.qtd_itens}"
+        #         product.quantity = (product.quantity - @sale.qtd_itens)
+        #         puts product.quantity
+        #         #product.quantity.save
+        #         #@produto = produtos
+        #         #@produto.save
+        #     end
+        #   end
+        # end
 
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
