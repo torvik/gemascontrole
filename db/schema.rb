@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721000142) do
+ActiveRecord::Schema.define(version: 20150902235328) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150721000142) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "cep"
   end
 
   add_index "customers", ["user_id"], name: "index_customers_on_user_id"
