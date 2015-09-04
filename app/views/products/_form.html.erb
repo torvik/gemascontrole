@@ -15,17 +15,35 @@
     <%= f.label :nome %>
     <%= f.text_field :name, class: "form-control" , placeholder: "Nome do produto" %>
   </div>
-  <div class="form-group">
-    <%= f.label :preço %>
-    <%= f.text_field :price , class: "form-control", placeholder: "Cadastrar o valor com o seguinte formato xxxx.xx. Será exibido em $." %>
+
+    <div class="form-group">
+    <%= f.label :forma %>
+    <%= f.text_field :forma, class: "form-control" , placeholder: "Forma do produto" %>
   </div>
+
+    <div class="form-group">
+    <%= f.label :tamanho %>
+    <%= f.text_field :tamanho, class: "form-control" , placeholder: "Tamanho do produto em mm" %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :preço_venda %>
+    <%= f.text_field :valuev , class: "form-control", placeholder: "Cadastrar o Preço de Venda com o seguinte formato xxxx.xx. Será exibido em $." %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :preço_custo %>
+    <%= f.text_field :price , class: "form-control", placeholder: "Cadastrar o Preço de Custo com o seguinte formato xxxx.xx. Será exibido em $." %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :preço_quilate %>
+    <%= f.text_field :value_carat , class: "form-control" , placeholder: "Cadastrar o Preço por quilate com o seguinte formato xxxx.xx. Será exibido em $." %>
+  </div>
+
   <div class="form-group">
     <%= f.label :peso_ct %>
     <%= f.text_field :weight, class: "form-control" , placeholder: "Peso por quilate xx.xx" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :valor_ct %>
-    <%= f.text_field :value_carat , class: "form-control" , placeholder: "Cadastrar o valor com o seguinte formato xxxx.xx. Será exibido em $." %>
   </div>
 
    <div class="form-group">

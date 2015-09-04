@@ -6,18 +6,34 @@
 </p>
 
 <p>
-  <strong>Preço $:</strong>
+  <strong>Forma:</strong>
+  <%= @product.forma %>
+</p>
+
+<p>
+  <strong>Tamanho:</strong>
+  <%= number_with_precision(@product.tamanho, precision: 2) %>
+</p>
+
+<p>
+  <strong>Preço de Venda $:</strong>
+  <%= number_to_currency(@product.valuev , precision: 2) %>
+</p>
+
+
+<p>
+  <strong>Preço de Custo $:</strong>
   <%= number_to_currency(@product.price , precision: 2) %>
+</p>
+
+<p>
+  <strong>Preço por ct:</strong>
+  <%= number_to_currency(@product.value_carat , precision: 2) %>
 </p>
 
 <p>
   <strong>Peso ct:</strong>
   <%= number_with_precision(@product.weight, :precision => 2) %>
-</p>
-
-<p>
-  <strong>Valor por ct:</strong>
-  <%= number_to_currency(@product.value_carat , precision: 2) %>
 </p>
 
 <p>

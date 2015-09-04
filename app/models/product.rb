@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :sales
 
   validates :name, :user_id, presence: true
-  validates :price, numericality: { :greater_than_or_equal_to => 0.01 },
+  validates :price, :valuev, :value_carat, :tamanho, numericality: { :greater_than_or_equal_to => 0.01 },
                     presence: true
 
 
