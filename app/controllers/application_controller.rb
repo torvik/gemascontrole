@@ -7,5 +7,19 @@ class ApplicationController < ActionController::Base
     home_dashboard_path
   end
 
+  def after_account_update(resource)
+    home_dashboard_path
+  end
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :name
+    devise_parameter_sanitizer.for(:account_update) << :name
+  end
+
+
 
 end
