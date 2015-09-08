@@ -9,10 +9,17 @@ class SalesController < ApplicationController
     @totalsales = Sale.where(:user_id => current_user.id).count
     @totalvendido = Sale.where(:user_id => current_user.id).sum(:amount)
     @valormediovenda = Sale.where(:user_id => current_user.id).average(:amount)
-
     @maiorvenda = Sale.where(:user_id => current_user.id).maximum(:amount)
     @menorvenda = Sale.where(:user_id => current_user.id).minimum(:amount)
 
+    respond_to do |format|
+      format.html # don't forget if you pass html
+      #format.xls { send_data(@sales.to_xls) }
+        format.xls {
+        filename = "Vendas-#{Time.now.strftime("%d-%m-%Y")}.xls"
+        send_data(@sales.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+         }
+    end
   end
 
   # GET /sales/1

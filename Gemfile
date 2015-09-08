@@ -14,6 +14,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap-datepicker-rails'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
+gem 'to_xls-rails'
 
 
 group :development, :test do

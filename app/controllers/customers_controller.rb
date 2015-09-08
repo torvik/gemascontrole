@@ -4,8 +4,18 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all.order("created_at DESC")
+    @customers = Customer.where(:user_id => current_user.id).order("created_at DESC")
     @totalcustomers = Customer.where(:user_id => current_user.id).count
+
+    respond_to do |format|
+      format.html # don't forget if you pass html
+      #format.xls { send_data(@customers.to_xls) }
+        format.xls {
+        filename = "Clientes-#{Time.now.strftime("%d-%m-%Y")}.xls"
+        send_data(@customers.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+         }
+    end
+
   end
 
   # GET /customers/1
