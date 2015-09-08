@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all.order("created_at DESC")
+    @totalproducts = Product.where(:user_id => current_user.id).count
+    @totalcusto = Product.where(:user_id => current_user.id).sum(:price)
+    @totalprecovenda = Product.where(:user_id => current_user.id).sum(:valuev)
+    @totalvalorct = Product.where(:user_id => current_user.id).sum(:value_carat)
+
   end
 
   # GET /products/1

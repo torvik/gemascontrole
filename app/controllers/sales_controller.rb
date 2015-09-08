@@ -6,6 +6,13 @@ class SalesController < ApplicationController
   # GET /sales.json
   def index
     @sales = Sale.where(:user_id => current_user.id).order("created_at DESC")
+    @totalsales = Sale.where(:user_id => current_user.id).count
+    @totalvendido = Sale.where(:user_id => current_user.id).sum(:amount)
+    @valormediovenda = Sale.where(:user_id => current_user.id).average(:amount)
+
+    @maiorvenda = Sale.where(:user_id => current_user.id).maximum(:amount)
+    @menorvenda = Sale.where(:user_id => current_user.id).minimum(:amount)
+
   end
 
   # GET /sales/1

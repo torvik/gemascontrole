@@ -2,6 +2,15 @@
 
 <h1>Produtos</h1>
 
+<h3>:: Total de produtos cadastrados: <%= @totalproducts %> </h3>
+
+<h3>:: Total preço de custo: <%= number_to_currency(@totalcusto, precision: 2) %> </h3>
+
+<h3>:: Total preço de venda: <%= number_to_currency(@totalprecovenda, precision: 2) %> </h3>
+
+<h3>:: Total preço por ct: <%= number_to_currency(@totalvalorct, precision: 2) %> </h3>
+
+
 <table class="table table-hover table-condensed">
   <thead>
     <tr>

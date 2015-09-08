@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
     home_dashboard_path
   end
 
-  def after_account_update(resource)
-    home_dashboard_path
-  end
+  # def after_edit_user_registration_path(resource)
+  #   home_dashboard_path
+  # end
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
