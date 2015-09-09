@@ -15,7 +15,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 gem 'to_xls-rails'
-
+gem 'htmltoword'
 
 group :development, :test do
   gem 'sqlite3'

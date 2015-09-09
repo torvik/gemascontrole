@@ -11,8 +11,8 @@ class CustomersController < ApplicationController
       format.html # don't forget if you pass html
       #format.xls { send_data(@customers.to_xls) }
         format.xls {
-        filename = "Clientes-#{Time.now.strftime("%d-%m-%Y")}.xls"
-        send_data(@customers.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+          filename = "Clientes-#{Time.now.strftime("%d-%m-%Y")}.xls"
+          send_data(@customers.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
          }
     end
 
@@ -21,6 +21,23 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    respond_to do |format|
+      format.html # don't forget if you pass html
+      format.docx {
+        filename = "Cliente-#{@customer.name}-#{Time.now.strftime("%d-%m-%Y")}.doc"
+        send_data(
+          [
+          "<br>"+"<b style='color:black;font-size: 20px;'>Nome:</b> <span style='font-size: 16px;'>#{@customer.name}</span>",
+          "<br>"+"<b style='color:black;font-size: 20px;'>E-mail:</b> <span style='font-size: 16px;'>#{@customer.email}</span>",
+          "<br>"+"<b style='color:black;font-size: 20px;'>Endereço:</b> <span style='font-size: 16px;'>#{@customer.endereco}</span>",
+          "<br>"+"<b style='color:black;font-size: 20px;'>CEP:</b> <span style='font-size: 16px;'>#{@customer.cep}</span>",
+          "<br>"+"<b style='color:black;font-size: 20px;'>Cidade:</b> <span style='font-size: 16px;'>#{@customer.cidade}</span>",
+          "<br>"+"<b style='color:black;font-size: 20px;'>Estado:</b> <span style='font-size: 16px;'>#{@customer.estado}</span>"],
+          :type => "application/docx; charset=utf-16; header=present",
+          :filename => filename)
+        #set_header('msword', "#{@customer.name}.doc") }
+      }
+    end
   end
 
   # GET /customers/new

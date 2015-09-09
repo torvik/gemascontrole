@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'home/contato'
   get 'home/dashboard'
 
-  #get "company/new_release" => 'company#new_release', :as => :new_release
+  #get "customers/word" => 'customers#word', :as => :word
 
 
 end

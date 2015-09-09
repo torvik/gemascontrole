@@ -2,13 +2,13 @@
 
 <h1>Produtos</h1>
 
-<h3>:: Total de produtos cadastrados: <%= @totalproducts %> </h3>
+<h4>:: Total de produtos cadastrados: <%= @totalproducts %> </h4>
 
-<h3>:: Total preço de custo: <%= number_to_currency(@totalcusto, precision: 2) %> </h3>
+<h4>:: Total preço de custo: <%= number_to_currency(@totalcusto, precision: 2) %> </h4>
 
-<h3>:: Total preço de venda: <%= number_to_currency(@totalprecovenda, precision: 2) %> </h3>
+<h4>:: Total preço de venda: <%= number_to_currency(@totalprecovenda, precision: 2) %> </h4>
 
-<h3>:: Total preço por ct: <%= number_to_currency(@totalvalorct, precision: 2) %> </h3>
+<h4>:: Total preço por ct: <%= number_to_currency(@totalvalorct, precision: 2) %> </h4>
 
 <%= link_to 'Exportar para Excel', products_path(:format => :xls) %>
 

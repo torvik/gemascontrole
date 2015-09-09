@@ -40,6 +40,8 @@
 <%= number_to_phone(@customer.telefone_2)  %>
 </p>
 
+<%= link_to 'Exportar para Word',  customer_path(:format => :docx) %> |
+
 
 <!-- <p id="pdf_link"><%= link_to "Gerar Etiqueta (PDF)", customer_path(@customer, :format => "pdf") %></p> -->
 

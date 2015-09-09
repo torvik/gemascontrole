@@ -2,15 +2,15 @@
 
 <h1>Vendas</h1>
 
-<h3>:: Total de vendas cadastradas: <%= @totalsales %> </h3>
+<h4>:: Total de vendas cadastradas: <%= @totalsales %> </h4>
 
-<h3>:: Valor total de vendas: <%= number_to_currency(@totalvendido, precision: 2) %> </h3>
+<h4>:: Valor total de vendas: <%= number_to_currency(@totalvendido, precision: 2) %> </h4>
 
-<h3>:: Valor médio de vendas: <%= number_to_currency(@valormediovenda, precision: 2) %> </h3>
+<h4>:: Valor médio de vendas: <%= number_to_currency(@valormediovenda, precision: 2) %> </h4>
 
-<h3>:: Maior venda: <%= number_to_currency(@maiorvenda, precision: 2) %> </h3>
+<h4>:: Maior venda: <%= number_to_currency(@maiorvenda, precision: 2) %> </h4>
 
-<h3>:: Menor venda: <%= number_to_currency(@menorvenda, precision: 2) %> </h3>
+<h4>:: Menor venda: <%= number_to_currency(@menorvenda, precision: 2) %> </h4>
 
 <%= link_to 'Exportar para Excel', sales_path(:format => :xls) %>
 
