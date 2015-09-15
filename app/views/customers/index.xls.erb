@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Clientes">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Nome</Data></Cell>
+        <Cell><Data ss:Type="String">E-mail</Data></Cell>
+        <Cell><Data ss:Type="String">Endereço</Data></Cell>
+        <Cell><Data ss:Type="String">CEP</Data></Cell>
+        <Cell><Data ss:Type="String">Cidade</Data></Cell>
+        <Cell><Data ss:Type="String">Estado</Data></Cell>
+        <Cell><Data ss:Type="String">Telefone</Data></Cell>
+        <Cell><Data ss:Type="String">Celular</Data></Cell>
+      </Row>
+    <% @customers.each do |customer| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= customer.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.endereco %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= number_to_cep(customer.cep) %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= customer.cidade %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.estado %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= number_to_phone(customer.telefone_1) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= number_to_phone(customer.telefone_2) %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

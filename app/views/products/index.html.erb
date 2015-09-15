@@ -10,7 +10,9 @@
 
 <h4>:: Total preço por ct: <%= number_to_currency(@totalvalorct, precision: 2) %> </h4>
 
-<%= link_to 'Exportar para Excel', products_path(:format => :xls) %>
+<p>
+  Download: <%= link_to "Excel", products_path(format: "xls") %>
+</p>
 
 <br>
 <br>

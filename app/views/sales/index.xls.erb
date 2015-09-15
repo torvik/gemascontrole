@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Vendas">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Data da Venda</Data></Cell>
+        <Cell><Data ss:Type="String">Valor</Data></Cell>
+        <Cell><Data ss:Type="String">Quantidade de itens</Data></Cell>
+        <Cell><Data ss:Type="String">Produto</Data></Cell>
+        <Cell><Data ss:Type="String">Cliente</Data></Cell>
+      </Row>
+    <% @sales.each do |sale| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= sale.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sale.date_sale %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= number_to_currency(sale.amount, precision: 2) %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= sale.qtd_itens %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sale.products.map { |c| c.name}.join(' | ') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= sale.customer.name %></Data></Cell>
+
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

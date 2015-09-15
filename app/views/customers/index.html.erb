@@ -4,7 +4,9 @@
 
 <h4>:: Total de clientes cadastrados: <%= @totalcustomers %> </h4>
 
-<%= link_to 'Exportar para Excel', customers_path(:format => :xls) %>
+<p>
+  Download: <%= link_to "Excel", customers_path(format: "xls") %>
+</p>
 
 <br>
 <br>

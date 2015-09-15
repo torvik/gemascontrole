@@ -14,10 +14,12 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html # don't forget if you pass html
       #format.xls { send_data(@products.to_xls) }
-        format.xls {
-        filename = "Produtos-#{Time.now.strftime("%d-%m-%Y")}.xls"
-        send_data(@products.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
-         }
+      format.csv { send_data @products.to_csv }
+      format.xls #{ send_data @products.to_csv(col_sep: "\t")  }
+        # format.xls {
+        # filename = "Produtos-#{Time.now.strftime("%d-%m-%Y")}.xls"
+        # send_data(@products.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+        #  }
     end
 
 

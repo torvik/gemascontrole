@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Produtos">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Nome</Data></Cell>
+        <Cell><Data ss:Type="String">Preço de Custo</Data></Cell>
+        <Cell><Data ss:Type="String">Preço de Venda</Data></Cell>
+        <Cell><Data ss:Type="String">Preço do ct</Data></Cell>
+        <Cell><Data ss:Type="String">Forma</Data></Cell>
+        <Cell><Data ss:Type="String">Tamanho</Data></Cell>
+        <Cell><Data ss:Type="String">Peso ct</Data></Cell>
+        <Cell><Data ss:Type="String">Quantidade em estoque</Data></Cell>
+      </Row>
+    <% @products.each do |product| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= product.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= product.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= number_to_currency(product.price, precision: 2) %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= number_to_currency(product.valuev, precision: 2) %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= number_to_currency(product.value_carat, precision: 2) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= product.forma %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= number_with_precision(product.tamanho , precision: 3)  %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= number_with_precision(product.weight , precision: 3)  %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= product.quantity %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

@@ -12,7 +12,9 @@
 
 <h4>:: Menor venda: <%= number_to_currency(@menorvenda, precision: 2) %> </h4>
 
-<%= link_to 'Exportar para Excel', sales_path(:format => :xls) %>
+<p>
+  Download: <%= link_to "Excel", sales_path(format: "xls") %>
+</p>
 
 <br>
 <br>

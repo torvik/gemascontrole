@@ -6,6 +6,14 @@ class Product < ActiveRecord::Base
   validates :price, :valuev, :value_carat, :tamanho, numericality: { :greater_than_or_equal_to => 0.01 },
                     presence: true
 
+  def self.to_csv(options = {})
+      CSV.generate(options) do |csv|
+        csv << column_names
+        all.each do |product|
+         csv << product.attributes.values_at(*column_names)
+      end
+    end
+  end
 
   def nome_quantidade
       "#{@product.name} #{@product.quantity}"
