@@ -25,20 +25,27 @@ class CustomersController < ApplicationController
   def show
     respond_to do |format|
       format.html # don't forget if you pass html
-      format.docx {
-        filename = "Cliente-#{@customer.name}-#{Time.now.strftime("%d-%m-%Y")}.doc"
-        send_data(
-          [
-          "<br>"+"<b style='color:black;font-size: 20px;'>Nome:</b> <span style='font-size: 16px;'>#{@customer.name}</span>",
-          "<br>"+"<b style='color:black;font-size: 20px;'>E-mail:</b> <span style='font-size: 16px;'>#{@customer.email}</span>",
-          "<br>"+"<b style='color:black;font-size: 20px;'>Endereço:</b> <span style='font-size: 16px;'>#{@customer.endereco}</span>",
-          "<br>"+"<b style='color:black;font-size: 20px;'>CEP:</b> <span style='font-size: 16px;'>#{@customer.cep}</span>",
-          "<br>"+"<b style='color:black;font-size: 20px;'>Cidade:</b> <span style='font-size: 16px;'>#{@customer.cidade}</span>",
-          "<br>"+"<b style='color:black;font-size: 20px;'>Estado:</b> <span style='font-size: 16px;'>#{@customer.estado}</span>"],
-          :type => "application/docx; charset=utf-16; header=present",
-          :filename => filename)
-        #set_header('msword', "#{@customer.name}.doc") }
-      }
+      format.docx do
+          render docx: 'show', filename: "Cliente-#{@customer.name}-#{Time.now.strftime("%d-%m-%Y")}.docx"
+      end
+
+      #format.docx { filename = "Cliente-#{@customer.name}-#{Time.now.strftime("%d-%m-%Y")}.docx" }
+
+      # format.docx {
+      #   filename = "Cliente-#{@customer.name}-#{Time.now.strftime("%d-%m-%Y")}.doc"
+      #   send_data(
+      #     [
+      #     "<br>"+"<b style='color:black;font-size: 20px;'>Nome:</b> <span style='font-size: 16px;'>#{@customer.name}</span>",
+      #     "<br>"+"<b style='color:black;font-size: 20px;'>E-mail:</b> <span style='font-size: 16px;'>#{@customer.email}</span>",
+      #     "<br>"+"<b style='color:black;font-size: 20px;'>Endereço:</b> <span style='font-size: 16px;'>#{@customer.endereco}</span>",
+      #     "<br>"+"<b style='color:black;font-size: 20px;'>CEP:</b> <span style='font-size: 16px;'>#{@customer.cep}</span>",
+      #     "<br>"+"<b style='color:black;font-size: 20px;'>Cidade:</b> <span style='font-size: 16px;'>#{@customer.cidade}</span>",
+      #     "<br>"+"<b style='color:black;font-size: 20px;'>Estado:</b> <span style='font-size: 16px;'>#{@customer.estado}</span>"],
+      #     :type => "application/docx; charset=utf-8; header=present",
+      #     :filename => filename)
+      #   #set_header('msword', "#{@customer.name}.doc") }
+      # }
+
     end
   end
 

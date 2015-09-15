@@ -5,5 +5,5 @@
 #Mime::Type.register_alias "text/excel", :xls
 Mime::Type.register "application/xls", :xls
 #Mime::Type.register 'application/vnd.ms-word', :msword
-Mime::Type.register "application/vnd.openxmlformats-officedocument.wordprocessingml.document", :docx
-
+#Mime::Type.register "application/vnd.openxmlformats-officedocument.wordprocessingml.document", :docx
+Mime::Type.register "application/docx", :docx
