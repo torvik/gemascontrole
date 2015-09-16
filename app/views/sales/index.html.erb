@@ -40,9 +40,9 @@
         <td><%= sale.qtd_itens %></td>
         <td><%= sale.products.map { |c| c.name}.join(' | ') %> </td>
         <td><%= sale.customer.name %></td>
-        <td><%= link_to 'Show', sale , class: "btn btn-default btn-xs" %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-default btn-xs" %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Exibir', sale , class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_sale_path(sale), class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Deletar', sale, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs" %></td>
        <% end %>
       </tr>
     <% end %>

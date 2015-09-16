@@ -44,9 +44,9 @@
         <td><%= number_to_currency(product.value_carat, precision: 2)   %></td>
         <td><%= number_with_precision(product.weight, :precision => 2) %></td>
         <td><%= product.quantity %></td>
-        <td><%= link_to 'Show', product , class: "btn btn-default btn-xs"%></td>
-        <td><%= link_to 'Edit', edit_product_path(product) , class: "btn btn-default btn-xs"%></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs"%></td>
+        <td><%= link_to 'Exibir', product , class: "btn btn-default btn-xs"%></td>
+        <td><%= link_to 'Editar', edit_product_path(product) , class: "btn btn-default btn-xs"%></td>
+        <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-xs"%></td>
       <% end %>
       </tr>
     <% end %>
