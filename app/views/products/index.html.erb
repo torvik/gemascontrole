@@ -38,7 +38,7 @@
       <% if current_user.id == product.user.id %>
         <td><%= product.name %></td>
         <td><%= product.forma %></td>
-        <td><%= number_with_precision(product.tamanho , precision: 3) %></td>
+        <td><%= product.tamanho  %></td>
         <td><%= number_to_currency(product.valuev, precision: 2)  %></td>
         <td><%= number_to_currency(product.price, precision: 2)  %></td>
         <td><%= number_to_currency(product.value_carat, precision: 2)   %></td>
