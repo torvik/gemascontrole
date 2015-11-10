@@ -8,10 +8,10 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Código</Data></Cell>
         <Cell><Data ss:Type="String">Nome</Data></Cell>
         <Cell><Data ss:Type="String">Preço de Custo</Data></Cell>
         <Cell><Data ss:Type="String">Preço de Venda</Data></Cell>
-        <Cell><Data ss:Type="String">Preço do ct</Data></Cell>
         <Cell><Data ss:Type="String">Forma</Data></Cell>
         <Cell><Data ss:Type="String">Tamanho</Data></Cell>
         <Cell><Data ss:Type="String">Peso ct</Data></Cell>
@@ -20,10 +20,10 @@
     <% @products.each do |product| %>
       <Row>
         <Cell><Data ss:Type="Number"><%= product.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= product.codigo %></Data></Cell>
         <Cell><Data ss:Type="String"><%= product.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= number_to_currency(product.price, precision: 2) %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= number_to_currency(product.valuev, precision: 2) %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= number_to_currency(product.value_carat, precision: 2) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= product.forma %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= number_with_precision(product.tamanho , precision: 3)  %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= number_with_precision(product.weight , precision: 3)  %></Data></Cell>
