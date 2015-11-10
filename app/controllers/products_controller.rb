@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(:user_id => current_user.id).order("created_at DESC")
+    @products = Product.where(:user_id => current_user.id).order("name ASC")
     @totalproducts = Product.where(:user_id => current_user.id).count
     @totalcusto = Product.where(:user_id => current_user.id).sum(:price)
     @totalprecovenda = Product.where(:user_id => current_user.id).sum(:valuev)
-    @totalvalorct = Product.where(:user_id => current_user.id).sum(:value_carat)
+    #@totalvalorct = Product.where(:user_id => current_user.id).sum(:value_carat)
 
     respond_to do |format|
       format.html # don't forget if you pass html
@@ -90,6 +90,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :weight, :value_carat, :user_id, :quantity, :forma, :tamanho, :valuev, :sale_ids => [])
+      params.require(:product).permit(:name, :price, :weight, :user_id, :quantity, :forma, :tamanho, :codigo, :valuev, :sale_ids => [])
     end
 end

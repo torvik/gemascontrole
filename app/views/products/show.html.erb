@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+
+<p>
+  <strong>Código:</strong>
+  <%= @product.codigo %>
+</p>
+
 <p>
   <strong>Nome:</strong>
   <%= @product.name %>
@@ -26,10 +32,6 @@
   <%= number_to_currency(@product.price , precision: 2) %>
 </p>
 
-<p>
-  <strong>Preço por ct:</strong>
-  <%= number_to_currency(@product.value_carat , precision: 2) %>
-</p>
 
 <p>
   <strong>Peso ct:</strong>
