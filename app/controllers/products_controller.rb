@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(:user_id => current_user.id).order("name ASC")
+    @products = Product.where(:user_id => current_user.id).order(name: :asc, tamanho: :asc)
     @totalproducts = Product.where(:user_id => current_user.id).count
     @totalcusto = Product.where(:user_id => current_user.id).sum(:price)
     @totalprecovenda = Product.where(:user_id => current_user.id).sum(:valuev)

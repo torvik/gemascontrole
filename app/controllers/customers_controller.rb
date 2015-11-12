@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.where(:user_id => current_user.id).order("created_at DESC")
+    @customers = Customer.where(:user_id => current_user.id).order("name ASC")
     @totalcustomers = Customer.where(:user_id => current_user.id).count
 
     respond_to do |format|
