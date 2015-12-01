@@ -5,17 +5,26 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
-    @totalsales = Sale.where(:user_id => current_user.id).count
-    @totalvendido = Sale.where(:user_id => current_user.id).sum(:amount)
-    @valormediovenda = Sale.where(:user_id => current_user.id).average(:amount)
-    @maiorvenda = Sale.where(:user_id => current_user.id).maximum(:amount)
-    @menorvenda = Sale.where(:user_id => current_user.id).minimum(:amount)
 
     respond_to do |format|
-      format.html # don't forget if you pass html
-      format.csv { send_data @sales.to_csv }
-      format.xls #{ send_data @products.to_csv(col_sep: "\t")  }
+      format.html {
+        @sales = Sale.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
+        @totalsales = Sale.where(:user_id => current_user.id).count
+        @totalvendido = Sale.where(:user_id => current_user.id).sum(:amount)
+        @valormediovenda = Sale.where(:user_id => current_user.id).average(:amount)
+        @maiorvenda = Sale.where(:user_id => current_user.id).maximum(:amount)
+        @menorvenda = Sale.where(:user_id => current_user.id).minimum(:amount)
+      }# don't forget if you pass html
+
+      format.csv do
+        @sales = Sale.where(:user_id => current_user.id).order("created_at DESC")
+        headers['Content-Disposition'] = "attachment; filename=\"vendas-#{Date.today}\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+
+      #format.csv { send_data @sales.to_csv }
+      #format.csv { send_data @sales.to_csv, filename: "vendas-#{Date.today}.csv" }
+      #format.xls #{ send_data @products.to_csv(col_sep: "\t")  }
       #format.xls { send_data(@sales.to_xls) }
         # format.xls {
         # filename = "Vendas-#{Time.now.strftime("%d-%m-%Y")}.xls"

@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+
+<%= link_to 'Exportar para Word',  customer_path(:format => :docx), class: "btn btn-success btn-sm" %>
+
+<br>
+<br>
+
 <p>
   <strong>Nome:</strong>
   <%= @customer.name %>
@@ -39,8 +45,6 @@
   <strong>Celular:</strong>
 <%= number_to_phone(@customer.telefone_2)  %>
 </p>
-
-<%= link_to 'Exportar para Word',  customer_path(:format => :docx) %> |
 
 
 <!-- <p id="pdf_link"><%= link_to "Gerar Etiqueta (PDF)", customer_path(@customer, :format => "pdf") %></p> -->

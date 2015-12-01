@@ -1,0 +1,5 @@
+<%- headers = ['ID','Data da Venda', 'Valor', 'Quantidade de itens', 'Produto', 'Cliente'] -%>
+<%= CSV.generate_line headers %>
+<%- @sales.each do |sale| -%>
+<%= CSV.generate_line([sale.id, sale.date_sale, number_to_currency(sale.amount, precision: 2), sale.qtd_itens ,  sale.products.map { |c| c.name}.join(' | '), sale.customer.name ]) -%>
+<%- end -%>
