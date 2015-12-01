@@ -26,7 +26,7 @@
 
    <div class="form-group">
    <%= f.label :produtos %><br>
-   <%= f.collection_check_boxes(:product_ids, Product.where(:user_id => current_user.id), :id, :name_and_codigo ) do |b| %>
+   <%= f.collection_check_boxes(:product_ids, Product.where(:user_id => current_user.id).order(codigo: :asc, name: :asc, tamanho: :asc), :id, :name_and_codigo ) do |b| %>
         <%= b.label class:"label-checkbox" do %>
          <%= b.check_box + "  " +  b.text + "  " %>
         <%end%>
