@@ -9,7 +9,7 @@
 <h4>:: Total preço de venda: <%= number_to_currency(@totalprecovenda, precision: 2) %> </h4>
 
 <p>
-  Download: <%= link_to "Excel", products_path(format: "xls") , class: "btn btn-success btn-sm" %>
+  Download: <%= link_to "Excel", products_path(format: :csv) , class: "btn btn-success btn-sm" %>
 </p>
 
 <br>

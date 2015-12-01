@@ -5,17 +5,24 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order(name: :asc, tamanho: :asc)
-    @totalproducts = Product.where(:user_id => current_user.id).count
-    @totalcusto = Product.where(:user_id => current_user.id).sum(:price)
-    @totalprecovenda = Product.where(:user_id => current_user.id).sum(:valuev)
-    #@totalvalorct = Product.where(:user_id => current_user.id).sum(:value_carat)
-
     respond_to do |format|
-      format.html # don't forget if you pass html
+      format.html {
+          @products = Product.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order(name: :asc, tamanho: :asc)
+          @totalproducts = Product.where(:user_id => current_user.id).count
+          @totalcusto = Product.where(:user_id => current_user.id).sum(:price)
+          @totalprecovenda = Product.where(:user_id => current_user.id).sum(:valuev)
+          #@totalvalorct = Product.where(:user_id => current_user.id).sum(:value_carat)
+      }# don't forget if you pass html
+
+      format.csv do
+        @products = Product.where(:user_id => current_user.id).order(name: :asc, tamanho: :asc)
+        headers['Content-Disposition'] = "attachment; filename=\"produtos-#{Date.today}\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+
       #format.xls { send_data(@products.to_xls) }
-      format.csv { send_data @products.to_csv }
-      format.xls #{ send_data @products.to_csv(col_sep: "\t")  }
+      #format.csv { send_data @products.to_csv }
+      #format.xls #{ send_data @products.to_csv(col_sep: "\t")  }
         # format.xls {
         # filename = "Produtos-#{Time.now.strftime("%d-%m-%Y")}.xls"
         # send_data(@products.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)

@@ -1,0 +1,5 @@
+<%- headers = ['ID','Código', 'Nome', 'Preço de Custo', 'Preço de Venda', 'Forma', 'Tamanho', 'Peso ct', 'Quantidade em estoque'] -%>
+<%= CSV.generate_line headers %>
+<%- @products.each do |product| -%>
+<%= CSV.generate_line([ product.id,product.codigo,product.name,number_to_currency(product.price, precision: 2),number_to_currency(product.valuev, precision: 2),product.forma,number_with_precision(product.tamanho , precision: 3),number_with_precision(product.weight , precision: 3),product.quantity ]).html_safe -%>
+<%- end -%>

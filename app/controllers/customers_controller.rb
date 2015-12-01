@@ -4,13 +4,23 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order("name ASC")
-    @totalcustomers = Customer.where(:user_id => current_user.id).count
+
 
     respond_to do |format|
-      format.html # don't forget if you pass html
-      format.csv { send_data @customers.to_csv }
-      format.xls #{ send_data @products.to_csv(col_sep: "\t")  }
+      format.html {
+        @customers = Customer.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order("name ASC")
+        @totalcustomers = Customer.where(:user_id => current_user.id).count
+      }# don't forget if you pass html
+
+      format.csv do
+        @customers = Customer.where(:user_id => current_user.id).order("name ASC")
+        headers['Content-Disposition'] = "attachment; filename=\"clientes-#{Date.today}\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+
+
+      #format.csv { send_data @customers.to_csv }
+      #format.xls #{ send_data @products.to_csv(col_sep: "\t")  }
       #format.xls { send_data(@customers.to_xls) }
         # format.xls {
         #   filename = "Clientes-#{Time.now.strftime("%d-%m-%Y")}.xls"
