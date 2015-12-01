@@ -19,6 +19,9 @@ class Product < ActiveRecord::Base
       "#{@product.name} #{@product.quantity}"
   end
 
+  def name_and_codigo
+    ":: Código: #{codigo} | Nome: #{name} | Forma: #{forma} :: "
+  end
 
 
 

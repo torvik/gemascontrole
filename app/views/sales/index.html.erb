@@ -19,6 +19,11 @@
 <br>
 <br>
 
+<%= link_to 'Nova Venda', new_sale_path , class: "btn btn-default btn-sm" %>
+
+<br>
+<br>
+
 <table class="table table-hover table-condensed">
   <thead>
     <tr>
@@ -32,7 +37,7 @@
   </thead>
 
   <tbody>
-    <% @sales.each do |sale| %>
+    <%  @sales.each do |sale| %>
       <tr>
       <% if current_user.id == sale.user.id %>
         <td><%= sale.date_sale.strftime("%d/%m/%Y") %></td>
@@ -51,4 +56,8 @@
 
 <br>
 
-<%= link_to 'Nova Venda', new_sale_path , class: "btn btn-default btn-sm" %>
+<div class="digg_pagination">
+  <%= will_paginate @sales, :container => false %>
+</div>
+
+

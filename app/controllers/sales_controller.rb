@@ -5,7 +5,7 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.where(:user_id => current_user.id).order("created_at DESC")
+    @sales = Sale.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
     @totalsales = Sale.where(:user_id => current_user.id).count
     @totalvendido = Sale.where(:user_id => current_user.id).sum(:amount)
     @valormediovenda = Sale.where(:user_id => current_user.id).average(:amount)
