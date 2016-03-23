@@ -1,6 +1,11 @@
 class Product < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :sales
+  has_many :line_items
+  has_many :orders, :through => :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+
 
   validates :name, :user_id, presence: true
   validates :price, :valuev, numericality: { :greater_than_or_equal_to => 0.01 },
@@ -22,6 +27,18 @@ class Product < ActiveRecord::Base
   def name_and_codigo
     ":: Código: #{codigo} | Nome: #{name} | Forma: #{forma} :: "
   end
+
+  # ensure that there are no line items referencing this product
+def ensure_not_referenced_by_any_line_item
+  if line_items.count.zero?
+     return true
+  else
+  errors[:base] << "Line Items present"
+     return false
+  end
+end
+
+
 
 
 

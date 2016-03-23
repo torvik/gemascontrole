@@ -1,0 +1,35 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data_venda %><br>
+    <%= f.date_select :sale_date, :class => 'form-control datepicker' %>
+  </div>
+    <div class="field">
+    <%= f.label :forma_de_pagamento, "Forma de Pagamento:" %><br>
+    <%= f.select :pay_type, Order::PAYMENT_TYPES, :prompt => "Selecione a forma de pagamento" , :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :status, "Status"%><br>
+    <%= f.select :status, Order::STATUS, :prompt => "Selecione o Status da Nota" , :class => 'form-control' %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :cliente %><br>
+    <%= collection_select(:order, :customer_id, Customer.where(:user_id => current_user.id) , :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Criar Nota' %>
+  </div>
+<% end %>

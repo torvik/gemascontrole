@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => "Número da Nota #"%><%= @order.id %></h1>
+</div>
+
+<p>
+  <strong>Data da Venda:</strong>
+  <%= @order.sale_date.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <strong>Total da Nota:</strong>
+  <%= number_to_currency( @order.total_price, precision: 2) %>
+</p>
+
+<p>
+  <strong>Forma de Pagamento:</strong>
+  <%= @order.pay_type %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @order.customer.name %>
+</p>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => "Produtos da Nota #"%><%= @order.id %></h1>
+</div>
+  <% total_pedido = 0 %>
+  <% @order.line_items.each do |line_item| %>
+  <dt><strong>Nome Produto:</strong></dt>
+  <dd><%= line_item.product.name  %></dd>
+  <dt><strong>Quantidade:</strong></dt>
+  <dd><%= line_item.quantity  %></dd>
+  <dt><strong>Subtotal:</strong></dt>
+  <dd><%= number_to_currency(line_item.total_price) %></dd>
+  <% total_pedido += line_item.total_price %>
+  <hr>
+  <% end %>
+  <dt><strong>Total da Nota:</strong></dt>
+  <dd><%= number_to_currency(total_pedido) %></dd>
+
+  <br> <br>
+
+
+<%= link_to 'Edit', edit_order_path(@order) , class: "btn btn-default btn-xs" %>
+<%= link_to 'Back', orders_path  , class: "btn btn-default btn-xs"%>

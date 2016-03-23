@@ -51,19 +51,19 @@
   </thead>
 
   <tbody>
-    <% @sales.each do |sale| %>
+    <% @orders.each do |order| %>
       <tr>
-      <% if current_user.id == sale.user.id %>
-        <td><%= link_to sale.date_sale.strftime("%d/%m/%Y"), sale %></td>
-        <td><%= sale.customer.name %></td>
-        <td><%= number_to_currency(sale.amount, precision: 2) %></td>
+      <% if current_user.id == order.user.id %>
+        <td><%= link_to order.sale_date.strftime("%d/%m/%Y"), order %></td>
+        <td><%= order.customer.name %></td>
+        <td><%= number_to_currency(order.total_price, precision: 2) %></td>
        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p> <%= link_to 'Mais vendas', sales_path , class: "menu_link " %> </p>
+<p> <%= link_to 'Mais Notas', orders_path , class: "menu_link " %> </p>
 
 </div>
 

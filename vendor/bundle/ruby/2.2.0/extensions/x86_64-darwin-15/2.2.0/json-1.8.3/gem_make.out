@@ -1,0 +1,9 @@
+/Users/pless/.rvm/rubies/ruby-2.2.4/bin/ruby -r ./siteconf20160222-14137-z58kpn.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+make "DESTDIR=" install

@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :orders
+
+  get 'store/index'
+
+  resources :line_items
+
+  resources :carts
+
   resources :sales
 
   resources :products

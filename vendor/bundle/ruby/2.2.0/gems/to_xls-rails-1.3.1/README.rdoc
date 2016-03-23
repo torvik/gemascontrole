@@ -1,0 +1,119 @@
+== to_xls-rails
+
+This simple plugin gives you the ability to call to_xls to a collection of array for Rails.
+Aarry element support object: ActiveRecord, Mongid, Hash.
+
+
+In your Gemfile:
+
+  gem 'to_xls-rails'# Last officially released gem
+  # gem "to_xls-rails", :git => "git://github.com/liangwenke/to_xls-rails.git" # Track git repo
+
+or, to install as a gem:
+
+  gem install to_xls-rails
+
+or, to install as a plugin:
+
+  rails plugin install git://github.com/liangwenke/to_xls-rails.git
+
+In your controller:
+
+  def index
+    @posts = Post.all
+
+    respond_to do |format|
+      format.html # don't forget if you pass html
+      format.xls { send_data(@posts.to_xls) }
+      # format.xls {
+      #   filename = "Posts-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls"
+      #   send_data(@posts.to_xls, :type => "text/xls; charset=utf-8; header=present", :filename => filename)
+      # }
+    end
+  end
+
+In your view:
+
+  <%= link_to 'Excel Download', posts_path(:format => :xls) %>
+
+
+== Usage
+
+  add below to RAILS_ROOT/config/initializers/mime_types.rb
+  Mime::Type.register_alias "text/excel", :xls
+
+  @posts = Post.all
+
+  #
+  # default are export header and all fileds
+  #
+
+  @posts.to_xls
+  @posts.to_xls(:only => [:title, :body])
+  @posts.to_xls(:except => [:id])
+  @posts.to_xls(:header => false)
+
+  # Array of Hashes support
+  [ { name: 'ruby', version: '2.1.0' }, { name: 'rails', version: '4.1.0' } ].to_xls
+
+  # Will prepend above header
+  # | Col 0, Row 0 | Col 1, Row 0 |
+  # | Col 0, Row 1 |              |
+  @posts.to_xls(:prepend => [["Col 0, Row 0", "Col 1, Row 0"], ["Col 0, Row 1"]])
+
+  # Translation of a column-value
+  @posts.to_xls{|column, value, row_index| column==:salutation ? t(value) + " at #{row_index}" : value}
+
+  # Added width options
+  @posts.to_xls(:column_width => [17,15,15,40,25,37])
+
+
+== Example
+
+  class PostsController < ApplicationController
+    def index
+      @posts = Post.all
+
+      respond_to do |format|
+        format.xls { send_data(@posts.to_xls) }
+        # format.xls {
+        #   filename = "posts-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls"
+        #   send_data(@posts.to_xls, :type => "application/excel; charset=utf-8; header=present", :filename => filename)
+        # }
+      end
+    end
+  end
+
+
+  Works on Rails 3:
+
+  class PostsController < ApplicationController
+    def index
+      # add this to config/initializers/mime_types.rb
+      Mime::Type.register "application/vnd.ms-excel", :xls
+
+      @posts = Post.all
+
+      respond_to do |format|
+        format.xls {
+          send_data @posts.to_xls
+          return # prevet Rails to seek for index.xls.erb
+        }
+      end
+    end
+  end
+
+
+== Contributors
+
+* {Juan Pablo Marzetti}[http://github.com/yonpols]
+* {Denis Yagofarov}[http://github.com/denyago]
+* {MrCherry}[https://github.com/MrCherry]
+* {Andreas König}[https://github.com/koa]
+* {nikneroz}[https://github.com/nikneroz]
+* {Gordon B. Isnor}[https://github.com/gordonbisnor]
+
+
+== Note
+
+Copyright (c) 2010 liangwenke.com@gmail.com, released under the MIT license

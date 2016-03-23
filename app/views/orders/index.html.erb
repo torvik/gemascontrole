@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listas de Notas</h1>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Data da Venda</th>
+      <th>Total da Nota</th>
+      <th>Forma de Pagamento</th>
+      <th>Status</th>
+      <th>Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+       <% if current_user.id == order.user.id %>
+        <td><%= order.sale_date.strftime("%d/%m/%Y") %></td>
+        <td><%= number_to_currency( order.total_price, precision: 2) %></td>
+        <td><%= order.pay_type %></td>
+        <td><%= order.status %></td>
+        <td><%= order.customer.name %></td>
+        <td><%= link_to 'Show', order , class: "btn btn-default btn-xs"%></td>
+        <td><%= link_to 'Edit', edit_order_path(order), class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="digg_pagination">
+  <%= will_paginate @orders, :container => false %>
+</div>
+

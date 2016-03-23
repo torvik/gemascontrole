@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale_date: 2016-03-22
+  total_price: 9.99
+  pay_type: MyString
+  status: MyString
+  user_id: 
+  customer_id: 
+
+two:
+  sale_date: 2016-03-22
+  total_price: 9.99
+  pay_type: MyString
+  status: MyString
+  user_id: 
+  customer_id: 

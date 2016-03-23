@@ -1,0 +1,20 @@
+<div class="cart_title">Sua Nota de Venda</div> <table>
+  <% for item in @cart.line_items %>
+<tr>
+<td><%= item.quantity %>&times;</td>
+<td><%= item.product.name %></td>
+<td class="item_price"><%= number_to_currency(item.total_price) %></td>
+</tr>
+<% end %>
+<tr class="total_line">
+<td colspan="2">Total</td>
+<td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+  </tr>
+</table>
+
+<br>
+<%= link_to 'Continuar incluindo itens na nota', store_index_path , class: "btn btn-primary btn-m"%>
+<%= link_to "Criar Nota", new_order_url, :method=>:get, class: "btn btn-success btn-m" %>
+<%= link_to 'Limpar Nota', @cart, :method => :delete,:confirm => 'Are you sure?', class: "btn btn-danger btn-m" %>
+
+
