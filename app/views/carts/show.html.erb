@@ -1,15 +1,33 @@
-<div class="cart_title">Sua Nota de Venda</div> <table>
-  <% for item in @cart.line_items %>
+<div class="cart_title">
+
+<h1>Sua Nota de Venda</h1>
+<hr>
+</div>
+
+<table class="table table-hover table-condensed">
+<thead>
+    <tr>
+      <th>Quantidade</th>
+      <th>Nome</th>
+      <th>Preço de Venda</th>
+    </tr>
+  </thead>
+
+<tbody>
+<% for item in @cart.line_items %>
 <tr>
-<td><%= item.quantity %>&times;</td>
-<td><%= item.product.name %></td>
-<td class="item_price"><%= number_to_currency(item.total_price) %></td>
+<td><b><%= item.quantity %>&times;</b></td>
+<td><b><%= item.product.name %></b></td>
+<td class="item_price"> <em><%= number_to_currency(item.total_price) %></em></td>
+
 </tr>
 <% end %>
 <tr class="total_line">
-<td colspan="2">Total</td>
-<td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
+<td colspan="2"> <h4><b>Total</b></h4> </td>
+<td class="total_cell"><h5><%= number_to_currency(@cart.total_price) %> </h5></td>
+<td></td>
+</tr>
+</tbody>
 </table>
 
 <br>

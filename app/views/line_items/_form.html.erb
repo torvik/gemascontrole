@@ -11,15 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.number_field :product_id %>
+   <div class="field">
+    <%= f.label :peso_ct %><br>
+    <%= f.number_field :weight %>
   </div>
-  <div class="field">
-    <%= f.label :cart_id %><br>
-    <%= f.number_field :cart_id %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Atualizar Peso" %>
   </div>
 <% end %>

@@ -19,7 +19,10 @@ class LineItemsController < ApplicationController
 
   # GET /line_items/1/edit
   def edit
+    #product = Product.find(params[:product_id])
+    #@line_item = atualizar_peso(product.id,@pesoct)
   end
+
 
   # POST /line_items
   # POST /line_items.json
@@ -28,6 +31,7 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     #@line_item = @cart.line_items.build(:product => product)
     @line_item = @cart.add_product(product.id)
+
 
 
     respond_to do |format|
@@ -45,9 +49,17 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
+
+
+
     respond_to do |format|
       if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+
+           @product = Product.find_by_id(@line_item.product_id)
+           @product.weight -= @line_item.weight
+           @product.save
+
+        format.html { redirect_to orders_path, notice: 'Peso atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -74,6 +86,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_id, :cart_id, :quantity, :weight)
     end
 end

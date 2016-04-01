@@ -38,9 +38,14 @@
   <dd><%= line_item.product.name  %></dd>
   <dt><strong>Quantidade:</strong></dt>
   <dd><%= line_item.quantity  %></dd>
+  <dt><strong>Peso ct:</strong></dt>
+  <dd><%= line_item.weight %></dd>
   <dt><strong>Subtotal:</strong></dt>
   <dd><%= number_to_currency(line_item.total_price) %></dd>
   <% total_pedido += line_item.total_price %>
+  <br>
+  <%= link_to "Atualizar Peso", edit_line_item_path(line_item.id), class: "btn btn-default btn-xs"  %>
+
   <hr>
   <% end %>
   <dt><strong>Total da Nota:</strong></dt>

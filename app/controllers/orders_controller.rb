@@ -56,6 +56,7 @@ class OrdersController < ApplicationController
         @line_items.each do |line_items|
            @product = Product.find_by_id(line_items.product_id)
            @product.quantity -= line_items.quantity
+           #@product.weight -= line_items.weight
            @product.save
            @total_pedido += line_items.total_price
           end

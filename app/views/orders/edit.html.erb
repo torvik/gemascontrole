@@ -2,5 +2,27 @@
 
 <%= render 'form' %>
 
+<div class="page-header">
+  <h1><%=t '.title', :default => "Produtos da Nota #"%><%= @order.id %></h1>
+</div>
+  <% total_pedido = 0 %>
+  <% @order.line_items.each do |line_item| %>
+  <dt><strong>Nome Produto:</strong></dt>
+  <dd><%= line_item.product.name  %></dd>
+  <dt><strong>Quantidade:</strong></dt>
+  <dd><%= line_item.quantity  %></dd>
+  <dt><strong>Peso ct:</strong></dt>
+  <dd><%= line_item.weight %></dd>
+  <dt><strong>Subtotal:</strong></dt>
+  <dd><%= number_to_currency(line_item.total_price) %></dd>
+  <% total_pedido += line_item.total_price %>
+  <hr>
+  <% end %>
+  <dt><strong>Total da Nota:</strong></dt>
+  <dd><%= number_to_currency(total_pedido) %></dd>
+
+  <br> <br>
+
+
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>
