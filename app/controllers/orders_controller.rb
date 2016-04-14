@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
         @line_items.each do |line_items|
            @product = Product.find_by_id(line_items.product_id)
            @product.quantity -= line_items.quantity
-           #@product.weight -= line_items.weight
+           @product.weight -= line_items.weight
            @product.save
            @total_pedido += line_items.total_price
           end
@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
 
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to(store_index_path, :notice => 'Thank you for your order.') }
+        format.html { redirect_to(orders_path, :notice => 'Thank you for your order.') }
 
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }

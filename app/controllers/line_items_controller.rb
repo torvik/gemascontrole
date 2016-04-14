@@ -46,18 +46,32 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def upgrade
+    @line_item = LineItem.find(params[:id])
+    @line_item.quantity = params[:item][:quantity] #added this line here
+    @line_item.weight = params[:item][:weight]
+    @product = Product.find_by_id(@line_item.product_id)
+    #@product.weight -= @line_item.weight
+    #@product.quantity -= @line_item.quantity
+    #@product.save
+    respond_to do |format|
+      if @line_item.save
+          format.html { redirect_to(current_cart) }
+      end
+    end
+  end
+
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
 
 
-
     respond_to do |format|
       if @line_item.update(line_item_params)
 
-           @product = Product.find_by_id(@line_item.product_id)
-           @product.weight -= @line_item.weight
-           @product.save
+         #  @product = Product.find_by_id(@line_item.product_id)
+         #  @product.weight -= @line_item.weight
+         #  @product.save
 
         format.html { redirect_to orders_path, notice: 'Peso atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @line_item }

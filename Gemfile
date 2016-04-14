@@ -17,7 +17,7 @@ gem 'wkhtmltopdf-binary'
 gem 'to_xls-rails'
 gem 'htmltoword'
 gem 'will_paginate', '~> 3.0.6'
-#gem 'sqlite3'
+gem 'sqlite3'
 
 
 group :development, :test do

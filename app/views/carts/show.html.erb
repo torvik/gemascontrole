@@ -7,18 +7,26 @@
 <table class="table table-hover table-condensed">
 <thead>
     <tr>
-      <th>Quantidade</th>
       <th>Nome</th>
       <th>Preço de Venda</th>
+      <th>Quantidade</th>
+      <th>Peso ct</th>
+      <th> </th>
     </tr>
   </thead>
 
 <tbody>
 <% for item in @cart.line_items %>
 <tr>
-<td><b><%= item.quantity %>&times;</b></td>
 <td><b><%= item.product.name %></b></td>
 <td class="item_price"> <em><%= number_to_currency(item.total_price) %></em></td>
+
+     <%= form_for :item, :url => line_items_upgrade_path(id: item.id) do |f| %>
+        <td>   <%= f.number_field :quantity, :value => item.quantity %> </td>
+        <td>   <%= f.text_field :weight, :value => item.weight %></td>
+        <td>   <%= submit_tag "Atualizar" %> </td>
+      <% end %>
+
 
 </tr>
 <% end %>

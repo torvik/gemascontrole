@@ -4,30 +4,24 @@
 <em>Incluir produtos na Nota</em>
 <hr>
 <% @products.each do |product| %>
-<div class="entry">
-
-<% if product.quantity == 0 %>
-<h3><%= product.name %> | <%= product.forma %> | <%= product.tamanho %> </h3>
-<em>Produto indisponível</em>
-<hr>
-<% else %>
-
-<h3><%= product.name %> | <%= product.forma %> | <%= product.tamanho %> </h3>
-<div class="price_line">
-<span class="price"><b>Quantidade em Estoque:</b> <%= product.quantity %>
-</span>
-<span class="price"><b>Peso por ct:</b> <%= number_with_precision(product.weight, :precision => 2) %>
-</span>
-
-<span class="price"><b>Preço de Venda:</b> <%= number_to_currency(product.valuev, precision: 2)  %>
-</span>
-<span class="price"><b>Preço de Custo:</b> <%= number_to_currency(product.price, precision: 2)  %>
-</span>
-<br/>
-<br/>
-<%= button_to 'Incluir Produto no Pedido', line_items_path(:product_id => product) , :class => 'btn btn-primary' %>
-<hr>
-<% end %>
-</div>
-</div>
+  <% if product.quantity <= 0 %>
+    <h3><%= product.name %> | <%= product.forma %> | <%= product.tamanho %> </h3>
+    <em>Produto indisponível</em>
+    <hr>
+  <% else %>
+      <h3><%= product.name %> | <%= product.forma %> | <%= product.tamanho %> </h3>
+      <div class="price_line">
+      <span class="price"><b>Quantidade em Estoque:</b> <%= product.quantity %>
+      </span>
+      <span class="price"><b>Peso por ct:</b> <%= number_with_precision(product.weight, :precision => 2) %>
+      </span>
+      <span class="price"><b>Preço de Venda:</b> <%= number_to_currency(product.valuev, precision: 2)  %>
+      </span>
+      <span class="price"><b>Preço de Custo:</b> <%= number_to_currency(product.price, precision: 2)  %>
+      </span>
+      <br/>
+      <br/>
+      <%= button_to 'Incluir Produto no Pedido', line_items_path(:product_id => product) , :class => 'btn btn-primary' %>
+      <hr>
+   <% end %>
 <% end %>
