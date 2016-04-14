@@ -34,6 +34,8 @@
 </div>
   <% total_pedido = 0 %>
   <% @order.line_items.each do |line_item| %>
+  <dt><strong>Código:</strong></dt>
+  <dd><%= line_item.product.codigo  %></dd>
   <dt><strong>Nome Produto:</strong></dt>
   <dd><%= line_item.product.name  %></dd>
   <dt><strong>Quantidade:</strong></dt>
